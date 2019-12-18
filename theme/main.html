@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+{% if page.title and page.title.startswith("_") %}
+<head>
+    {{ page.content }}
+</head>
+{% else %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">{% if config.site_description %}
+    <meta name="description" content="{{ config.site_description|striptags }}">{% endif %} {% if config.site_author %}
+    <meta name="author" content="{{ config.site_author }}">{% endif %} {% if page.canonical_url %}
+    <link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
+    <link rel="shortcut icon" href="{{ 'img/trademark-laminas-foundation-rgb.svg'|url }}">
+
+    <title>{% if page.title and page.title != 'Home' %}{{ page.title }} - {% endif %}{{ config.site_name }} - Laminas Docs</title>
+
+    <link rel="stylesheet" href="{{ ('css/styles.css')|url }}">
+    {%- for path in extra_css %}
+        <link href="{{ path }}" rel="stylesheet">
+    {%- endfor %}
+</head>
+<body id="page-top" class="{{ config.extra.project|lower|replace(' ', '-') }}">
+
+    {# Navigation #}
+    {% include "partials/navbar.html" %}
+
+    {# Header #}
+    {% include "partials/header.html" %}
+
+    {# Content #}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-12">
+                {% include "partials/toc.html" %}
+            </div>
+            <div class="col-md-7 col-sm-12 content" role="main" data-spy="scroll" data-target=".toc">
+                {% block content %}
+                    {% include "partials/content.html" %}
+                {% endblock %}
+            </div>
+            <div class="col-md-3 col-sm-12 sidebar">
+                {% if config.site_name != 'Documentation' %}
+                    {% include "partials/component-selector.html" %}
+                    {% include "partials/subnavigation.html" %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {# Footer #}
+    {% include "partials/footer.html" %}
+
+    <script>
+        let base_url = '{{ base_url }}',
+            project  = "{{ config.extra.project|lower|replace(' ', '-') }}",
+            siteName = '{{ config.site_name }}';
+    </script>
+    <script src="{{ ('js/scripts.js')|url }}"></script>
+
+    {# Search modal #}
+    {% include "partials/search-modal.html" %}
+</body>
+{% endif %}
+
+</html>
+{% if page and page.is_homepage %}
+<!--
+MkDocs version : {{ mkdocs_version }}
+Build Date UTC : {{ build_date_utc }}
+-->
+{% endif %}

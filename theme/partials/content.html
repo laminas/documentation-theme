@@ -1,0 +1,44 @@
+{% include "partials/breadcrumb.html" %}
+
+{# Warning message for older versions #}
+{% if page.url != '' and config.extra.current_version != Undefined and page.url[:2] != config.extra.current_version %}
+    <div class="alert alert-danger" role="alert">
+        <h4>Caution</h4>
+        <p>
+            The documentation you are viewing is for an older version of this component.<br>
+            <a href="{{ nav.homepage.url|url }}">Switch to the latest ({{ config.extra.current_version }}) version.</a>
+        </p>
+    </div>
+{% endif %}
+
+{% if page.is_homepage %}
+    {% include "pages/homepage.html" %}
+{% elif config.extra.installation and page.title == 'Installation' %}
+    {% include "pages/installation.html" %}
+{% else %}
+
+    {# Skip version numbers like v1, v2, v3 #}
+    {% if page.parent and config.extra.versions == Undefined
+          or (config.extra.versions != Undefined and not page.parent.title in config.extra.versions) %}
+        <h2 class="chapter__headline">{{ page.parent.title }}</h2>
+    {% endif %}
+
+    {{ page.content }}
+{% endif %}
+
+{# Pager #}
+{% if page.previous_page or page.next_page  %}
+    {% include "partials/page-nav.html" %}
+{% endif %}
+
+{# Message for help wanted #}
+{% if not page.is_homepage or (page.is_homepage and config.extra.show_special_homepage) %}
+    <div class="help-wanted">
+        <p>
+            Found a mistake or want to contribute to the documentation?
+            <a href="{{ page.edit_url }}" target="_blank" class="help-wanted__link">
+                Edit this page on GitHub!
+            </a>
+        </p>
+    </div>
+{% endif %}
