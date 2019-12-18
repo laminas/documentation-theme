@@ -1,6 +1,13 @@
 'use strict';
 
 {
+    const urls = {
+        'api-tools': '/data/component-list.api-tools.json',
+        'components': '/data/component-list.components.json',
+        'mezzio': '/data/component-list.mezzio.json',
+        'mvc': '/data/component-list.mvc.json',
+    };
+
     function getContainerElements() {
         return document.querySelectorAll('.component-selector');
     }
@@ -139,13 +146,6 @@
         });
     }
 
-    function parseComponentList(event) {
-        const request = event.target;
-        if (request.readyState === request.DONE && request.status === 200) {
-            prepareComponentList(JSON.parse(request.responseText));
-        }
-    }
-
     function toggleStickyGroupStyles(group, scrollTop) {
         const stickyStart = parseInt(group.getAttribute('data-sticky-start'));
         const stickyEnd = group.getAttribute('data-sticky-end')
@@ -184,9 +184,8 @@
     // When the window has finished loading the DOM, fetch the components and
     // populate the dropdown.
     window.addEventListener('load', function () {
-        const request = new XMLHttpRequest();
-        request.onreadystatechange = parseComponentList;
-        request.open('GET', '//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json');
-        request.send();
+        fetch(urls[project])
+            .then(response => response.json())
+            .then(data => prepareComponentList(data));
     });
 }
