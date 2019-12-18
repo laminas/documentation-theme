@@ -12,11 +12,11 @@
     <meta name="description" content="{{ config.site_description|striptags }}">{% endif %} {% if config.site_author %}
     <meta name="author" content="{{ config.site_author }}">{% endif %} {% if page.canonical_url %}
     <link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
-    <link rel="shortcut icon" href="{{ 'img/trademark-laminas-foundation-rgb.svg'|url }}">
+    <link rel="shortcut icon" href="{{ '/img/trademark-laminas-foundation-rgb.svg'|url }}">
 
     <title>{% if page.title and page.title != 'Home' %}{{ page.title }} - {% endif %}{{ config.site_name }} - Laminas Docs</title>
 
-    <link rel="stylesheet" href="{{ ('css/styles.css')|url }}">
+    <link rel="stylesheet" href="{{ ('/css/styles.css')|url }}">
     {%- for path in extra_css %}
         <link href="{{ path }}" rel="stylesheet">
     {%- endfor %}
@@ -57,7 +57,7 @@
             project  = "{{ config.extra.project|lower|replace(' ', '-') }}",
             siteName = '{{ config.site_name }}';
     </script>
-    <script src="{{ ('js/scripts.js')|url }}"></script>
+    <script src="{{ ('/js/scripts.js')|url }}"></script>
     {%- for path in extra_javascript %}
         <script src="{{ path }}"></script>
     {%- endfor %}
