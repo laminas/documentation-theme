@@ -4,6 +4,7 @@
     const urls = {
         'api-tools': 'https://froschdesign.github.io/documentation-theme/data/component-list.api-tools.json',
         'components': 'https://froschdesign.github.io/documentation-theme/data/component-list.components.json',
+        'components-and-mvc': 'https://froschdesign.github.io/documentation-theme/data/component-list.components.json',
         'mezzio': 'https://froschdesign.github.io/documentation-theme/data/component-list.mezzio.json',
         'mvc': 'https://froschdesign.github.io/documentation-theme/data/component-list.mvc.json',
     };
