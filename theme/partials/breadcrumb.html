@@ -1,9 +1,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="https://getlaminas.org/">Home</a></li>
-
         {% if config.site_name != 'Documentation' %}
-            <li class="breadcrumb-item"><a href="https://docs.getlaminas.org/">Documentation</a></li>
+            <li class="breadcrumb-item"><a href="{{ config.extra.overview_url }}">Overview</a></li>
 
             {% if page.title != 'Home' %}
                 <li class="breadcrumb-item"><a href="{{ nav.homepage.url|url }}">{{ config.site_name }}</a></li>
@@ -25,7 +23,7 @@
                 <li class="breadcrumb-item">{{ config.site_name }}</li>
             {% endif %}
         {% else %}
-            <li class="breadcrumb-item">Documentation</li>
+            <li class="breadcrumb-item">Overview</li>
         {% endif %}
     </ol>
 </nav>
