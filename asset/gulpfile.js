@@ -111,6 +111,6 @@ exports.watch = () => {
     watch('js/**/*.js', js);
     watch('sass/**/*.scss', css);
 };
-exports.default = () => {
-    parallel(js, fonts, css, images);
+exports.default = (done) => {
+    parallel(js, fonts, css, images)(done);
 };

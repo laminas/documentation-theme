@@ -14,7 +14,7 @@
 # and run from the project root.
 #
 # @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
-# @copyright Copyright (c) 2016 Zend Technologies USA Inc. (http://www.zend.com)
+# @copyright Copyright (c) 2019 Laminas Project (https://getlaminas.org)
 
 SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd -P)"
 
@@ -43,9 +43,9 @@ echo "Building documentation in ${DOC_DIR}"
 ${SCRIPT_PATH}/update_mkdocs_yml.py ${SITE_URL} ${DOCS_DIR}
 
 # Preserve files if necessary (as mkdocs build --clean removes all files)
-if [ -e .zf-mkdoc-theme-preserve ]; then
+if [ -e .laminas-mkdoc-theme-preserve ]; then
     mkdir .preserve
-    for PRESERVE in $(cat .zf-mkdoc-theme-preserve); do
+    for PRESERVE in $(cat .laminas-mkdoc-theme-preserve); do
         cp ${DOC_DIR}/html/${PRESERVE} .preserve/
     done
 fi
@@ -60,8 +60,8 @@ mkdocs build --clean
 mv mkdocs.yml.orig mkdocs.yml
 
 # Restore files if necessary
-if [ -e .zf-mkdoc-theme-preserve ]; then
-    for PRESERVE in $(cat .zf-mkdoc-theme-preserve); do
+if [ -e .laminas-mkdoc-theme-preserve ]; then
+    for PRESERVE in $(cat .laminaszf-mkdoc-theme-preserve); do
         mv .preserve/${PRESERVE} ${DOC_DIR}/html/${PRESERVE}
     done
     rm -Rf ./preserve
@@ -84,7 +84,7 @@ echo "Fixing fenced code blocks"
 php ${SCRIPT_PATH}/fenced_code.php ${DOC_DIR}
 
 # Replace landing page content
-if [ -e .zf-mkdoc-theme-landing ]; then
+if [ -e .laminas-mkdoc-theme-landing ]; then
     echo "Replacing landing page content"
     php ${SCRIPT_PATH}/swap_index.php ${DOC_DIR}
 fi

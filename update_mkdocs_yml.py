@@ -37,13 +37,13 @@ mkdocs["markdown_extensions"] = [
 
 mkdocs["theme"] = {
         "name": None,
-        "custom_dir": "zf-mkdoc-theme/theme",
+        "custom_dir": "laminas-mkdoc-theme/theme",
         "static_templates": [
             "404.html"
         ]
     }
 
-with open("zf-mkdoc-theme/assets.yml") as f:
+with open("laminas-mkdoc-theme/assets.yml") as f:
     assets = yaml.load(f, Loader=yaml.SafeLoader)
 
 if "extra" not in mkdocs.keys():

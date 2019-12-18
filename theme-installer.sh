@@ -5,7 +5,7 @@
 #
 # - Installs mkdocs under the current user.
 # - Installs pymdown-extensions under the current user.
-# - If the zf-mkdoc-theme is not present under the current directory, downloads
+# - If the documentation-theme is not present under the current directory, downloads
 #   and installs the latest tarball.
 #
 # In order to work, it needs the following environment variables defined:
@@ -14,7 +14,7 @@
 # into the documentation auto-deployment workflow.
 #
 # @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
-# @copyright Copyright (c) 2016 Zend Technologies USA Inc. (http://www.zend.com)
+# @copyright Copyright (c) 2019 Laminas Project (https://getlaminas.org)
 
 SCRIPT_PATH="$(pwd)"
 
@@ -23,16 +23,19 @@ pip install --user mkdocs
 pip install --user pymdown-extensions
 pip install --user markdown-fenced-code-tabs
 
-# Conditionally install zf-mkdoc-theme.
-if [[ ! -d "zf-mkdoc-theme/theme" ]];then
-    echo "Downloading zf-mkdoc-theme..." ;
-    mkdir -p zf-mkdoc-theme ;
-    curl -s -L https://github.com/zendframework/zf-mkdoc-theme/releases/latest | egrep -o '/zendframework/zf-mkdoc-theme/archive/[0-9]*\.[0-9]*\.[0-9]*\.tar\.gz' | head -n1 | wget -O zf-mkdoc-theme.tgz --base=https://github.com/ -i - ;
+# Conditionally install documentation-theme.
+if [[ ! -d "laminas-mkdoc-theme/theme" ]];then
+    echo "Downloading documentation-theme..." ;
+    mkdir -p laminas-mkdoc-theme ;
+    curl -s -L https://github.com/laminas/documentation-theme/releases/latest |
+        egrep -o '/laminas/documentation-theme/archive/[0-9]*\.[0-9]*\.[0-9]*\.tar\.gz' |
+        head -n1 |
+        wget -O documentation-theme.tgz --base=https://github.com/ -i - ;
     (
-        cd zf-mkdoc-theme ;
-        tar xzf ../zf-mkdoc-theme.tgz --strip-components=1 ;
+        cd laminas-mkdoc-theme ;
+        tar xzf ../documentation-theme.tgz --strip-components=1 ;
     );
-    echo "Finished downloading and installing zf-mkdoc-theme" ;
+    echo "Finished downloading and installing documentation-theme" ;
 fi
 
 exit 0;

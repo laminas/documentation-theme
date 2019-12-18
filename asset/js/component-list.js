@@ -6,29 +6,7 @@
     }
 
     function prepareComponentList(components) {
-        const componentList = {
-            learn: {
-                label: "Learn ZF",
-                choices: []
-            },
-            middleware: {
-                label: "Expressive and PSR-15 Middleware",
-                choices: []
-            },
-            mvc: {
-                label: "MVC Framework",
-                choices: []
-            },
-            components: {
-                label: "Components",
-                choices: []
-            },
-            projects: {
-                label: "Tooling and Composer Plugins",
-                choices: []
-            }
-        };
-        let uncategorized = [];
+        let componentList = [];
 
         // eslint-disable-next-line no-use-before-define
         const matchActive = new RegExp('\/' + siteName + '(\/|$)');
@@ -46,9 +24,7 @@
                 }
             };
 
-            componentList.hasOwnProperty(component.group)
-                ? componentList[component.group].choices.push(choice)
-                : uncategorized.push(choice);
+            componentList.push(choice);
         });
 
         // Initialize the Choices selector using the component selector as its element
@@ -65,7 +41,7 @@
             });
 
             choices.setChoices(
-                Array.prototype.concat.apply(Object.values(componentList), uncategorized),
+                componentList,
                 'value',
                 'label',
                 true
@@ -186,7 +162,7 @@
     window.addEventListener('load', function () {
         const request = new XMLHttpRequest();
         request.onreadystatechange = parseComponentList;
-        request.open('GET', '//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json');
+        request.open('GET', '/component-list.json');
         request.send();
     });
 }
