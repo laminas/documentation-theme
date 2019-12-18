@@ -2,10 +2,10 @@
 
 {
     const urls = {
-        'api-tools': '/data/component-list.api-tools.json',
-        'components': '/data/component-list.components.json',
-        'mezzio': '/data/component-list.mezzio.json',
-        'mvc': '/data/component-list.mvc.json',
+        'api-tools': 'https://froschdesign.github.io/documentation-theme/data/component-list.api-tools.json',
+        'components': 'https://froschdesign.github.io/documentation-theme/data/component-list.components.json',
+        'mezzio': 'https://froschdesign.github.io/documentation-theme/data/component-list.mezzio.json',
+        'mvc': 'https://froschdesign.github.io/documentation-theme/data/component-list.mvc.json',
     };
 
     function getContainerElements() {
