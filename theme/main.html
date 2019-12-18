@@ -58,6 +58,9 @@
             siteName = '{{ config.site_name }}';
     </script>
     <script src="{{ ('js/scripts.js')|url }}"></script>
+    {%- for path in extra_javascript %}
+        <script src="{{ path }}"></script>
+    {%- endfor %}
 
     {# Search modal #}
     {% include "partials/search-modal.html" %}
