@@ -23,7 +23,7 @@ function help() {
     echo "  ${0} [options]"
     echo "Options:"
     echo "  -h           Usage help; this message."
-    echo "  -u <url>     Deplyment URL of documentation (to ensure search works)"
+    echo "  -u <url>     Deployment URL of documentation (to ensure search works)"
 }
 
 while getopts hu: option;do
