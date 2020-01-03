@@ -39,7 +39,7 @@ mkdocs["theme"] = {
         "name": None,
         "custom_dir": "laminas-mkdoc-theme/theme",
         "static_templates": [
-            "404.html"
+            "pages/404.html"
         ]
     }
 
