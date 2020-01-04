@@ -52,7 +52,7 @@ $process = static function () use ($files, &$replacements) {
 
             $code = htmlspecialchars(preg_replace('/^>(' . $matches['spaces'][$i] . '|$)/m', '', $matches['code'][$i]));
 
-            $replacements['html']['<p>' . $placeholder . '</p>'] = '<pre class=codehilite><code class=language-' . $matches['lang'][$i] . '>'
+            $replacements['html']['<p>' . $placeholder . '</p>'] = '<pre class="codehilite"><code class="language-' . $matches['lang'][$i] . '">'
                 . $code . '</code></pre>';
             $replacements['md'][$before . '> ' . $placeholder . $after] = $content;
         }
