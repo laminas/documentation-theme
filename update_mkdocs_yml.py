@@ -37,7 +37,7 @@ mkdocs["markdown_extensions"] = [
 
 mkdocs["theme"] = {
         "name": None,
-        "custom_dir": "laminas-mkdoc-theme/theme",
+        "custom_dir": "documentation-theme/theme",
         "static_templates": [
             "pages/404.html"
         ]
