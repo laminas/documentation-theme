@@ -18,13 +18,14 @@ function skip() {
     exit 0
 }
 
-
 if [ ! -f "${GITHUB_WORKSPACE}/mkdocs.yml" ];then
     print_info "No documentation detected; skipping"
     exit 0
 fi
 
+
 # check values
+remote_repo=""
 if [ -n "${ACTIONS_DEPLOY_KEY}" ]; then
 
     print_info "setup with ACTIONS_DEPLOY_KEY"
@@ -46,6 +47,7 @@ else
     print_error "ACTIONS_DEPLOY_KEY not found"
     exit 1
 fi
+print_info "Publishing to ${remote_repo}"
 
 site_url=${INPUT_SITE_URL}
 if [[ "${site_url}" == "" ]]; then
@@ -55,6 +57,7 @@ if [[ "${site_url}" == "" ]]; then
         site_url=https://docs.laminas.dev
     fi
 fi
+print_info "Using site URL ${site_url}"
 
 PUBLISH_REPOSITORY=${GITHUB_REPOSITORY}
 PUBLISH_BRANCH=gh-pages
