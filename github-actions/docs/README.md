@@ -16,11 +16,11 @@ As an example:
 
 ```yaml
 - name: Docs
-  uses: laminas/github-actions/docs@master
+  uses: laminas/documentation-theme/github-actions/docs@master
   with:
     emptyCommits: false
     publishDir: doc/html
-    siteUrl: https://api-tools.laminas.dev
+    siteUrl: https://docs.laminas.dev
 ```
 
 The above will build docs in the `doc/html` subdirectory, will NOT build for
