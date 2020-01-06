@@ -61,8 +61,9 @@ print_info "Using site URL ${site_url}"
 
 PUBLISH_REPOSITORY=${GITHUB_REPOSITORY}
 PUBLISH_BRANCH=gh-pages
+PUBLISH_DIR="${INPUT_PUBLISH_DIR:-docs/html}"
 
-print_info "Deploy to ${PUBLISH_REPOSITORY}@${PUBLISH_BRANCH} from directory ${INPUT_PUBLISH_DIR}"
+print_info "Deploy to ${PUBLISH_REPOSITORY}@${PUBLISH_BRANCH} from directory ${PUBLISH_DIR}"
 
 print_info "Cloning documentation theme"
 git clone git://github.com/laminas/documentation-theme.git ${GITHUB_WORKSPACE}/documentation-theme
@@ -80,12 +81,12 @@ if git clone --depth=1 --single-branch --branch "${remote_branch}" "${remote_rep
 
     git rm -r --ignore-unmatch '*'
 
-    find "${GITHUB_WORKSPACE}/${INPUT_PUBLISH_DIR}" -maxdepth 1 -not -name ".git" -not -name ".github" | \
+    find "${GITHUB_WORKSPACE}/${PUBLISH_DIR}" -maxdepth 1 -not -name ".git" -not -name ".github" | \
         tail -n +2 | \
         xargs -I % cp -rf % "${local_dir}/"
 else
     print_info "- Creating new ${remote_branch} branch on ${remote_repo} in ${local_dir}"
-    cd "${INPUT_PUBLISH_DIR}"
+    cd "${PUBLISH_DIR}"
     git init
     git checkout --orphan "${remote_branch}"
 fi
