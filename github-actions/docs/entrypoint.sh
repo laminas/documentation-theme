@@ -72,6 +72,7 @@ remote_branch="${PUBLISH_BRANCH}"
 local_dir="${HOME}/ghpages_${RANDOM}"
 
 if git clone --depth=1 --single-branch --branch "${remote_branch}" "${remote_repo}" "${local_dir}"; then
+    print_info "- Cloning branch ${remote_branch} from ${remote_repo} to ${local_dir} and removing previous files"
     cd "${local_dir}"
 
     git rm -r --ignore-unmatch '*'
@@ -80,34 +81,37 @@ if git clone --depth=1 --single-branch --branch "${remote_branch}" "${remote_rep
         tail -n +2 | \
         xargs -I % cp -rf % "${local_dir}/"
 else
+    print_info "- Creating new ${remote_branch} branch on ${remote_repo} in ${local_dir}"
     cd "${INPUT_PUBLISH_DIR}"
     git init
     git checkout --orphan "${remote_branch}"
 fi
 
-# push to publishing branch
+print_info "- Adding user and email to local clone for purposes of commit"
 if [[ -n "${INPUT_USERNAME}" ]]; then
-    git config user.name "${INPUT_USERNAME}"
+    cd "${local_dir}" && git config user.name "${INPUT_USERNAME}"
 else
-    git config user.name "${GITHUB_ACTOR}"
+    cd "${local_dir}" && git config user.name "${GITHUB_ACTOR}"
 fi
 if [[ -n "${INPUT_USEREMAIL}" ]]; then
-    git config user.email "${INPUT_USEREMAIL}"
+    cd "${local_dir}" && git config user.email "${INPUT_USEREMAIL}"
 else
-    git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+    cd "${local_dir}" && git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 fi
-git remote rm origin || true
-git remote add origin "${remote_repo}"
-git add --all
+cd "${local_dir}" && git remote rm origin || true
+cd "${local_dir}" && git remote add origin "${remote_repo}"
+cd "${local_dir}" && git add --all
 
 print_info "Allowing empty commits: ${INPUT_EMPTYCOMMITS}"
 COMMIT_MESSAGE="Automated deployment: $(date -u) ${GITHUB_SHA}"
 if [[ ${INPUT_EMPTYCOMMITS} == "false" ]]; then
-    git commit -m "${COMMIT_MESSAGE}" || skip
+    cd "${local_dir}" && git commit -m "${COMMIT_MESSAGE}" || skip
 else
-    git commit --allow-empty -m "${COMMIT_MESSAGE}"
+    cd "${local_dir}" && git commit --allow-empty -m "${COMMIT_MESSAGE}"
 fi
 
-git push origin "${remote_branch}"
+# push to publishing branch
+print_info "- Pushing from ${local_dir} to ${remote_branch}"
+cd "${local_dir}" && git push origin "${remote_branch}"
 
 print_info "${GITHUB_SHA} was successfully deployed"
