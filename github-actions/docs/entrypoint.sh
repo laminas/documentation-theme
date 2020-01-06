@@ -49,9 +49,7 @@ fi
 
 site_url=${INPUT_SITE_URL}
 if [[ "${site_url}" == "" ]]; then
-    if [[ "$GITHUB_REPOSITORY" =~ "^laminas" ]]; then
-        site_url=https://docs.laminas.dev
-    elif [[ "$GITHUB_REPOSITORY" =~ "^mezzio/" ]]; then
+    if [[ "$GITHUB_REPOSITORY" =~ "^mezzio/" ]]; then
         site_url=https://docs.mezzio.dev
     else
         site_url=https://docs.laminas.dev
