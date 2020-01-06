@@ -41,7 +41,7 @@ if [ -n "${ACTIONS_DEPLOY_KEY}" ]; then
     echo "${ACTIONS_DEPLOY_KEY}" > "${SSH_DIR}/id_rsa"
     chmod 400 "${SSH_DIR}/id_rsa"
 
-    remote_repo="git@github.com:${PUBLISH_REPOSITORY}.git"
+    remote_repo="git@github.com:${GITHUB_REPOSITORY}.git"
 
 else
     print_error "ACTIONS_DEPLOY_KEY not found"
