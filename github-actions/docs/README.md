@@ -94,6 +94,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build and deploy documentation
         uses: laminas/documentation-theme/github-actions/docs@master
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         with:
           emptyCommits: false
 ```
