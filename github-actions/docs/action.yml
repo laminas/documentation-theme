@@ -12,11 +12,9 @@ inputs:
     username:
         description: 'Set git user.name'
         required: false
-        default: 'false'
     useremail:
         description: 'Set git user.email'
         required: false
-        default: 'false'
     siteUrl:
         description: 'Base URL for site containing documentation; defaults to determining from repository organization.'
         required: false
