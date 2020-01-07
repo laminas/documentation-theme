@@ -19,7 +19,6 @@ As an example:
   uses: laminas/documentation-theme/github-actions/docs@master
   with:
     emptyCommits: false
-    publishDir: doc/html
     siteUrl: https://docs.laminas.dev
 ```
 
@@ -44,10 +43,6 @@ empty commits, and uses an alternate base site URL.
 
 - useremail Specify a git user email under which to make the documentation commit.
   If none is specified, it uses `${username}@users.noreply.github.com`.
-
-- publishDir: Specify the directory under the `${GITHUB_WORKSPACE}` in which to
-  clone the gh-pages branch and build documentation. By default, it assumes
-  `docs/html`.
 
 - siteUrl: Specify the scheme and authority of the site URL under which
   documentation will be available. By default, this will be either

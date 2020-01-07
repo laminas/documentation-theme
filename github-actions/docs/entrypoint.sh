@@ -61,7 +61,7 @@ print_info "Using site URL ${site_url}"
 
 PUBLISH_REPOSITORY=${GITHUB_REPOSITORY}
 PUBLISH_BRANCH=gh-pages
-PUBLISH_DIR="${INPUT_PUBLISH_DIR:-docs/html}"
+PUBLISH_DIR=`grep 'site_dir:' mkdocs.yml | awk '{print $2}'`
 
 print_info "Deploy to ${PUBLISH_REPOSITORY}@${PUBLISH_BRANCH} from directory ${PUBLISH_DIR}"
 
