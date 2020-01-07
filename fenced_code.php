@@ -1,7 +1,7 @@
 <?php
 /**
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2019 Zend Technologies USA Inc. (https://www.zend.com)
+ * @copyright Copyright (c) 2019-2020 Laminas Project (https://getlaminas.org)
  */
 
 $docPath = isset($argv[1]) ? $argv[1] : 'doc';

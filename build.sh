@@ -14,7 +14,7 @@
 # and run from the project root.
 #
 # @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
-# @copyright Copyright (c) 2019 Laminas Project (https://getlaminas.org)
+# @copyright Copyright (c) 2019-2020 Laminas Project (https://getlaminas.org)
 
 SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd -P)"
 
@@ -61,7 +61,7 @@ mv mkdocs.yml.orig mkdocs.yml
 
 # Restore files if necessary
 if [ -e .laminas-mkdoc-theme-preserve ]; then
-    for PRESERVE in $(cat .laminaszf-mkdoc-theme-preserve); do
+    for PRESERVE in $(cat .laminas-mkdoc-theme-preserve); do
         mv .preserve/${PRESERVE} ${DOC_DIR}/html/${PRESERVE}
     done
     rm -Rf ./preserve

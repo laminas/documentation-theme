@@ -51,7 +51,7 @@ print_info "Publishing to ${remote_repo}"
 
 site_url=${INPUT_SITE_URL}
 if [[ "${site_url}" == "" ]]; then
-    if [[ "$GITHUB_REPOSITORY" =~ "^mezzio/" ]]; then
+    if [[ "$GITHUB_REPOSITORY" =~ ^mezzio/ ]]; then
         site_url=https://docs.mezzio.dev
     else
         site_url=https://docs.laminas.dev
