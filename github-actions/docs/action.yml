@@ -17,10 +17,6 @@ inputs:
         description: 'Set git user.email'
         required: false
         default: 'false'
-    publishDir:
-        description: 'Subdirectory in which to build documentation, and subsequently publish; defaults to docs/html'
-        required: false
-        default: 'docs/html'
     siteUrl:
         description: 'Base URL for site containing documentation; defaults to determining from repository organization.'
         required: false
