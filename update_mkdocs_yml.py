@@ -43,5 +43,7 @@ mkdocs["theme"] = {
         ]
     }
 
+mkdocs["extra"]["repo_name"] = mkdocs["repo_url"].replace("https://github.com/", "")
+
 with open("mkdocs.yml", "w") as f:
     yaml.dump(mkdocs, f, default_flow_style=False)
