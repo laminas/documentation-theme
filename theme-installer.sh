@@ -14,7 +14,7 @@
 # into the documentation auto-deployment workflow.
 #
 # @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
-# @copyright Copyright (c) 2019 Laminas Project (https://getlaminas.org)
+# @copyright Copyright (c) 2019-2020 Laminas Project (https://getlaminas.org)
 
 SCRIPT_PATH="$(pwd)"
 
