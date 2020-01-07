@@ -32,12 +32,7 @@ if [ -n "${DOCS_DEPLOY_KEY}" ]; then
 
     print_info "setup with DOCS_DEPLOY_KEY"
 
-    if [ -n "${SCRIPT_MODE}" ]; then
-        print_info "run as SCRIPT_MODE"
-        SSH_DIR="${HOME}/.ssh"
-    else
-        SSH_DIR="/root/.ssh"
-    fi
+    SSH_DIR="/root/.ssh"
     mkdir "${SSH_DIR}"
     ssh-keyscan -t rsa github.com > "${SSH_DIR}/known_hosts"
     echo "${DOCS_DEPLOY_KEY}" > "${SSH_DIR}/id_rsa"
