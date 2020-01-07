@@ -61,7 +61,7 @@ mv mkdocs.yml.orig mkdocs.yml
 
 # Restore files if necessary
 if [ -e .laminas-mkdoc-theme-preserve ]; then
-    for PRESERVE in $(cat .laminaszf-mkdoc-theme-preserve); do
+    for PRESERVE in $(cat .laminas-mkdoc-theme-preserve); do
         mv .preserve/${PRESERVE} ${DOC_DIR}/html/${PRESERVE}
     done
     rm -Rf ./preserve
