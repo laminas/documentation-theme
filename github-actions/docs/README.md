@@ -51,7 +51,7 @@ empty commits, and uses an alternate base site URL.
 
 ## Environment
 
-This action requires the environment variable `$ACTIONS_DEPLOY_KEY`, which
+This action requires the environment variable `$DOCS_DEPLOY_KEY`, which
 should be a deployment key.
 
 Generate a deployment key as follows:
@@ -69,12 +69,12 @@ Under **Deploy Keys**, select the **Add Key** button, add the contents of your
 `gh-pages.pub` file, and select the "Allow Write Access" checkbox.
 
 Then go to **Secrets**, select the **Add** button, give the new secret the title
-`ACTIONS_DEPLOY_KEY`, and paste in the contents of your `gh-pages` file.
+`DOCS_DEPLOY_KEY`, and paste in the contents of your `gh-pages` file.
 
 ## Example workflow
 
 ```yaml
-name: docs
+name: docs-build
 
 on:
   push:
@@ -86,11 +86,10 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Build and deploy documentation
         uses: laminas/documentation-theme/github-actions/docs@master
         env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          DOCS_DEPLOY_KEY: ${{ secrets.DOCS_DEPLOY_KEY }}
         with:
           emptyCommits: false
 ```

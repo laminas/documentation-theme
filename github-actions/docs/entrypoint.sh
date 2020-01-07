@@ -18,17 +18,19 @@ function skip() {
     exit 0
 }
 
+# checkout the repository
+git clone git://github.com/${GITHUB_REPOSITORY}.git ${GITHUB_WORKSPACE}
+
 if [ ! -f "${GITHUB_WORKSPACE}/mkdocs.yml" ];then
     print_info "No documentation detected; skipping"
     exit 0
 fi
 
-
 # check values
 remote_repo=""
-if [ -n "${ACTIONS_DEPLOY_KEY}" ]; then
+if [ -n "${DOCS_DEPLOY_KEY}" ]; then
 
-    print_info "setup with ACTIONS_DEPLOY_KEY"
+    print_info "setup with DOCS_DEPLOY_KEY"
 
     if [ -n "${SCRIPT_MODE}" ]; then
         print_info "run as SCRIPT_MODE"
@@ -38,13 +40,12 @@ if [ -n "${ACTIONS_DEPLOY_KEY}" ]; then
     fi
     mkdir "${SSH_DIR}"
     ssh-keyscan -t rsa github.com > "${SSH_DIR}/known_hosts"
-    echo "${ACTIONS_DEPLOY_KEY}" > "${SSH_DIR}/id_rsa"
+    echo "${DOCS_DEPLOY_KEY}" > "${SSH_DIR}/id_rsa"
     chmod 400 "${SSH_DIR}/id_rsa"
 
     remote_repo="git@github.com:${GITHUB_REPOSITORY}.git"
-
 else
-    print_error "ACTIONS_DEPLOY_KEY not found"
+    print_error "DOCS_DEPLOY_KEY not found"
     exit 1
 fi
 print_info "Publishing to ${remote_repo}"
