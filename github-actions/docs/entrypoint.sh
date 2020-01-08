@@ -86,6 +86,10 @@ else
     cd "${local_dir}"
     git checkout --orphan "${remote_branch}"
     git rm -rf .
+
+    find "${GITHUB_WORKSPACE}/${PUBLISH_DIR}" -maxdepth 1 -not -name ".git" -not -name ".github" | \
+        tail -n +2 | \
+        xargs -I % cp -rf % "${local_dir}/"
 fi
 
 print_info "- Adding user and email to local clone for purposes of commit"
