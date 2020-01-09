@@ -76,21 +76,17 @@ if git clone --depth=1 --single-branch --branch "${remote_branch}" "${remote_rep
     cd "${local_dir}"
 
     git rm -r --ignore-unmatch '*'
-
-    find "${GITHUB_WORKSPACE}/${PUBLISH_DIR}" -maxdepth 1 -not -name ".git" -not -name ".github" | \
-        tail -n +2 | \
-        xargs -I % cp -rf % "${local_dir}/"
 else
     print_info "- Creating new ${remote_branch} branch on ${remote_repo} in ${local_dir}"
     git clone --depth=1 --single-branch --branch master "${remote_repo}" "${local_dir}"
     cd "${local_dir}"
     git checkout --orphan "${remote_branch}"
     git rm -rf .
-
-    find "${GITHUB_WORKSPACE}/${PUBLISH_DIR}" -maxdepth 1 -not -name ".git" -not -name ".github" | \
-        tail -n +2 | \
-        xargs -I % cp -rf % "${local_dir}/"
 fi
+
+find "${GITHUB_WORKSPACE}/${PUBLISH_DIR}" -maxdepth 1 -not -name ".git" -not -name ".github" | \
+    tail -n +2 | \
+    xargs -I % cp -rf % "${local_dir}/"
 
 print_info "- Adding user and email to local clone for purposes of commit"
 if [[ -n "${INPUT_USERNAME}" ]]; then
