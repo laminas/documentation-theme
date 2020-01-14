@@ -44,6 +44,7 @@ mkdocs["theme"] = {
     }
 
 mkdocs["extra"]["repo_name"] = mkdocs["repo_url"].replace("https://github.com/", "")
+mkdocs["extra"]["base_url"] = "https://docs.laminas.dev/"
 
 if mkdocs["extra"]["project"] == "Components":
     mkdocs["extra"]["project_url"] = "https://docs.laminas.dev/components/"
