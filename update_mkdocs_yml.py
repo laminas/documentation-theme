@@ -44,6 +44,14 @@ mkdocs["theme"] = {
     }
 
 mkdocs["extra"]["repo_name"] = mkdocs["repo_url"].replace("https://github.com/", "")
+mkdocs["extra"]["base_url"] = "https://docs.laminas.dev/"
+
+if mkdocs["extra"]["project"] == "Components":
+    mkdocs["extra"]["project_url"] = "https://docs.laminas.dev/components/"
+elif (mkdocs["extra"]["project"] == "MVC") or (mkdocs["extra"]["project"] == "Mvc"):
+    mkdocs["extra"]["project_url"] = "https://docs.laminas.dev/mvc/"
+elif mkdocs["extra"]["project"] == "Mezzio":
+    mkdocs["extra"]["project_url"] = "https://docs.mezzio.dev/"
 
 with open("mkdocs.yml", "w") as f:
     yaml.dump(mkdocs, f, default_flow_style=False)

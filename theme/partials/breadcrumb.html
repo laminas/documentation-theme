@@ -1,7 +1,8 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         {% if config.site_name != 'Documentation' %}
-            <li class="breadcrumb-item"><a href="{{ config.extra.overview_url }}">Overview</a></li>
+            <li class="breadcrumb-item"><a href="{{ config.extra.base_url }}">Overview</a></li>
+            <li class="breadcrumb-item"><a href="{{ config.extra.project_url }}">{{ config.extra.project }}</a></li>
 
             {% if page.title != 'Home' %}
                 <li class="breadcrumb-item"><a href="{{ nav.homepage.url|url }}">{{ config.site_name }}</a></li>
