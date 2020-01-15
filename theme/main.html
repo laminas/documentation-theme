@@ -16,7 +16,7 @@
 
     <title>{% if page.title and page.title != 'Home' %}{{ page.title }} - {% endif %}{{ config.site_name }} - Laminas Docs</title>
 
-    <link rel="stylesheet" href="{{ (config.extra.base_url + '/css/styles.css')|replace('//', '/') }}">
+    <link rel="stylesheet" href="{{ (config.extra.base_url + 'css/styles.css') }}">
     {%- for path in extra_css %}
         <link href="{{ path }}" rel="stylesheet">
     {%- endfor %}
@@ -57,7 +57,7 @@
             project  = "{{ config.extra.project|lower|replace(' ', '-') }}",
             siteName = '{{ config.site_name }}';
     </script>
-    <script src="{{ (config.extra.base_url + '/js/scripts.js')|replace('//', '/') }}"></script>
+    <script src="{{ (config.extra.base_url + 'js/scripts.js') }}"></script>
     {%- for path in extra_javascript %}
         <script src="{{ path }}"></script>
     {%- endfor %}
