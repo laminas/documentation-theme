@@ -33,7 +33,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2 col-sm-12">
-                {% include "partials/toc.html" %}
+                {# Table of contents #}
+                {% if not page.is_homepage or config.extra.show_special_homepage %}
+                    {% include "partials/toc.html" %}
+                {% endif %}
             </div>
             <div class="col-md-7 col-sm-12 content" role="main" data-spy="scroll" data-target=".toc">
                 {% block content %}
