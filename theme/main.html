@@ -12,7 +12,7 @@
     <meta name="description" content="{{ config.site_description|striptags }}">{% endif %} {% if config.site_author %}
     <meta name="author" content="{{ config.site_author }}">{% endif %} {% if page.canonical_url %}
     <link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
-    <link rel="shortcut icon" href="{{ '/img/trademark-laminas-foundation-rgb.svg'|url }}">
+    <link rel="shortcut icon" href="{{ config.extra.base_url }}img/trademark-laminas-foundation-rgb.svg">
 
     <title>{% if page.title and page.title != 'Home' %}{{ page.title }} - {% endif %}{{ config.site_name }} - Laminas Docs</title>
 
