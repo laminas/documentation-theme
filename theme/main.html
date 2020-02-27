@@ -17,9 +17,9 @@
     <title>{% if page.title and page.title != 'Home' %}{{ page.title }} - {% endif %}{{ config.site_name }} - Laminas Docs</title>
 
     <link rel="stylesheet" href="{{ config.extra.base_url }}css/styles.css">
-    {%- for path in extra_css %}
+    {% for path in extra_css %}
         <link href="{{ path }}" rel="stylesheet">
-    {%- endfor %}
+    {% endfor %}
 </head>
 <body id="page-top" class="{{ config.extra.project|lower|replace(' ', '-') }}" data-spy="scroll" data-target=".toc" data-offset="20">
 
@@ -60,9 +60,9 @@
             siteName = '{{ config.site_name }}';
     </script>
     <script src="{{ config.extra.base_url }}js/scripts.js"></script>
-    {%- for path in extra_javascript %}
+    {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
-    {%- endfor %}
+    {% endfor %}
 
     {# Search modal #}
     {% include "partials/search-modal.html" %}
