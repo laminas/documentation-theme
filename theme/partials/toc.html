@@ -8,7 +8,7 @@
             <ul class="toc__list">
                 {% for toc_subitem in toc_item.children %}
                     <li class="toc__entry">
-                        <a href="{{ toc_subitem.url }}" class="toc__link">{{ toc_subitem.title }}</a>
+                        <a href="{{ toc_subitem.url }}" class="toc__link nav-link">{{ toc_subitem.title }}</a>
                     </li>
                 {% endfor %}
             </ul>

@@ -21,7 +21,7 @@
         <link href="{{ path }}" rel="stylesheet">
     {%- endfor %}
 </head>
-<body id="page-top" class="{{ config.extra.project|lower|replace(' ', '-') }}">
+<body id="page-top" class="{{ config.extra.project|lower|replace(' ', '-') }}" data-spy="scroll" data-target=".toc" data-offset="20">
 
     {# Navigation #}
     {% include "partials/navbar.html" %}
