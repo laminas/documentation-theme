@@ -22,12 +22,8 @@ mkdocs["markdown_extensions"] = [
                 "use_pygments": False
             }
         },
-        "pymdownx.superfences",
-        {
-            "markdown_fenced_code_tabs": {
-                "template": "bootstrap4"
-            }
-        },
+        "pymdownx.superfences:",
+        "pymdownx.tabbed:",
         {
             "toc": {
                 "toc_depth": 2

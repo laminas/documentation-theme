@@ -51,8 +51,8 @@ if [ -e .laminas-mkdoc-theme-preserve ]; then
 fi
 
 # Find all fenced code blocks
-echo "Find all fenced code blocks"
-php ${SCRIPT_PATH}/fenced_code_before.php ${DOC_DIR}
+echo "Code examples in lists"
+php ${SCRIPT_PATH}/list_code_examples.php ${DOC_DIR}
 
 mkdocs build --clean
 
@@ -78,7 +78,3 @@ php ${SCRIPT_PATH}/table_responsive.php ${DOC_DIR}
 # Fix pipes in tables
 echo "Fixing pipes in tables"
 php ${SCRIPT_PATH}/table_fix_pipes.php ${DOC_DIR}
-
-# Fix fenced code blocks
-echo "Fixing fenced code blocks"
-php ${SCRIPT_PATH}/fenced_code.php ${DOC_DIR}

@@ -18,7 +18,7 @@ RUN cd /usr/bin \
   && ln -sf python3 python \
   && ln -sf pip3 pip
 
-RUN pip install mkdocs pyaml pymdown-extensions markdown-fenced-code-tabs
+RUN pip install mkdocs pyaml pymdown-extensions==7.0rc2
 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
 ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]
