@@ -20,7 +20,7 @@ SCRIPT_PATH="$(pwd)"
 
 # Install mkdocs and required extensions.
 pip install --user mkdocs
-pip install --user pymdown-extensions==7.0rc2
+pip install --user pymdown-extensions
 
 # Conditionally install documentation-theme.
 if [[ ! -d "laminas-mkdoc-theme/theme" ]];then
