@@ -81,6 +81,7 @@ on:
     branches:
       - master
   repository_dispatch:
+    types: docs-build
 
 jobs:
   build-deploy:
