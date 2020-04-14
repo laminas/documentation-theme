@@ -18,6 +18,7 @@ RUN cd /usr/bin \
   && ln -sf python3 python \
   && ln -sf pip3 pip
 
+RUN pip install nltk==3.4.5
 RUN pip install mkdocs pyaml pymdown-extensions
 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
