@@ -9,9 +9,9 @@
         {% if config.extra.installation.config_provider_class or config.extra.installation.module_class %}
         <li class="toc__entry">
             <a href="#installation-for-mezzio-and-laminas-mvc-application" class="toc__link nav-link">
-                Installation for
+                Installation for A
                 {% if config.extra.installation.config_provider_class %}Mezzio{% endif %}
-                {% if config.extra.installation.config_provider_class and config.extra.installation.module_class %}and{% endif %}
+                {% if config.extra.installation.config_provider_class and config.extra.installation.module_class %}or{% endif %}
                 {% if config.extra.installation.module_class %}laminas-mvc{% endif %}
                 Application
             </a>
@@ -28,9 +28,9 @@
 
 {% if config.extra.installation.config_provider_class or config.extra.installation.module_class %}
 <h2 id="installation-for-mezzio-and-laminas-mvc-application">
-    Installation for
+    Installation for A
     {% if config.extra.installation.config_provider_class %}Mezzio{% endif %}
-    {% if config.extra.installation.config_provider_class and config.extra.installation.module_class %}and{% endif %}
+    {% if config.extra.installation.config_provider_class and config.extra.installation.module_class %}or{% endif %}
     {% if config.extra.installation.module_class %}laminas-mvc{% endif %}
     Application
 </h2>
@@ -87,7 +87,7 @@
     can be remembered.
 </p>
 
-<details><summary>Installation and manual Configuration</summary>
+<details><summary>Installation and Manual Configuration</summary>
 <p>
     If the installer is not used, the manual configuration is needed to add the
     component to the application.
