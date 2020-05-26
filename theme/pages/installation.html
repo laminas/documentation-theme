@@ -104,12 +104,12 @@
         e.g. <code>config/config.php</code>:
     </p>
 
-<pre><code class="php">
+<pre data-line="5"><code class="language-php">
 $aggregator = new Laminas\ConfigAggregator\ConfigAggregator([
     // …
     Mezzio\ConfigProvider::class,
     Mezzio\Router\ConfigProvider::class,
-    {{ config.extra.installation.config_provider_class }}, // <-- Add this line
+    {{ config.extra.installation.config_provider_class }}, // Add this line
     // …
 ]);
 </code></pre>
@@ -122,9 +122,9 @@ $aggregator = new Laminas\ConfigAggregator\ConfigAggregator([
         modules, e.g. <code>config/modules.config.php</code>:
     </p>
 
-<pre><code class="php">
+<pre data-line="2"><code class="language-php">
 return [
-    '{{ config.extra.installation.module_class }}', // <-- Add this line
+    '{{ config.extra.installation.module_class }}', // Add this line
     'Laminas\Router',
     'Laminas\Session',
     'Laminas\Validator',
