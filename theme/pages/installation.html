@@ -98,7 +98,7 @@
 <pre><code class="language-bash">$ composer require {{ config.extra.repo_name }}</code></pre>
 
 {% if config.extra.installation.config_provider_class %}
-    <h4>Configuration for a mezzio-based Application</h4>
+    <h4>Manual configuration for a Mezzio-based application</h4>
     <p>
         Add the configuration provider of {{ config.site_name }} to the configuration file,
         e.g. <code>config/config.php</code>:
@@ -116,7 +116,7 @@ $aggregator = new Laminas\ConfigAggregator\ConfigAggregator([
 {% endif %}
 
 {% if config.extra.installation.module_class %}
-    <h4>Configuration for a laminas-mvc-based Application</h4>
+    <h4>Manual configuration for a laminas-mvc-based Application</h4>
     <p>
         Add {{ config.site_name }} as component at the top of the configuration file for
         modules, e.g. <code>config/modules.config.php</code>:
