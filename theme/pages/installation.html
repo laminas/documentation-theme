@@ -1,21 +1,23 @@
 <h1>Installation</h1>
-<div>
-    <div class="toc">
-        <h6 class="toc__headline">In This Article</h6>
-        <ul class="toc__list">
-            <li class="toc__entry">
-                <a href="#standard-installation" class="toc__link">Standard Installation</a>
-            </li>
+<div class="toc">
+    <h6 class="toc__headline">On this page</h6>
+    <ul class="toc__list">
+        <li class="toc__entry">
+            <a href="#standard-installation" class="toc__link nav-link">Standard Installation</a>
+        </li>
 
-            {% if config.extra.installation.config_provider_class or config.extra.installation.module_class %}
-            <li class="toc__entry">
-                <a href="#installation-for-mezzio-and-laminas-mvc-application" class="toc__link">
-                    Installation for mezzio and laminas-mvc Application
-                </a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
+        {% if config.extra.installation.config_provider_class or config.extra.installation.module_class %}
+        <li class="toc__entry">
+            <a href="#installation-for-mezzio-and-laminas-mvc-application" class="toc__link nav-link">
+                Installation for
+                {% if config.extra.installation.config_provider_class %}mezzio{% endif %}
+                {% if config.extra.installation.config_provider_class and config.extra.installation.module_class %}and{% endif %}
+                {% if config.extra.installation.module_class %}laminas-mvc{% endif %}
+                Application
+            </a>
+        </li>
+        {% endif %}
+    </ul>
 </div>
 
 {# Standard Installation #}
@@ -102,12 +104,12 @@
         e.g. <code>config/config.php</code>:
     </p>
 
-<pre><code class="php">
+<pre data-line="5"><code class="language-php">
 $aggregator = new Laminas\ConfigAggregator\ConfigAggregator([
     // …
     Mezzio\ConfigProvider::class,
     Mezzio\Router\ConfigProvider::class,
-    {{ config.extra.installation.config_provider_class }}, // <-- Add this line
+    {{ config.extra.installation.config_provider_class }}, // Add this line
     // …
 ]);
 </code></pre>
@@ -120,9 +122,9 @@ $aggregator = new Laminas\ConfigAggregator\ConfigAggregator([
         modules, e.g. <code>config/modules.config.php</code>:
     </p>
 
-<pre><code class="php">
+<pre data-line="2"><code class="language-php">
 return [
-    '{{ config.extra.installation.module_class }}', // <-- Add this line
+    '{{ config.extra.installation.module_class }}', // Add this line
     'Laminas\Router',
     'Laminas\Session',
     'Laminas\Validator',
