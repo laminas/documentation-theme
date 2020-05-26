@@ -43,6 +43,8 @@
                 {% endblock %}
             </div>
             <div class="col-md-3 col-sm-12 sidebar">
+                {% include "partials/donation-banner.html" %}
+
                 {% if config.site_name != 'Documentation' %}
                     {% include "partials/component-selector.html" %}
                     {% include "partials/subnavigation.html" %}
