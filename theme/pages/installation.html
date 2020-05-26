@@ -10,7 +10,7 @@
         <li class="toc__entry">
             <a href="#installation-for-mezzio-and-laminas-mvc-application" class="toc__link nav-link">
                 Installation for
-                {% if config.extra.installation.config_provider_class %}mezzio{% endif %}
+                {% if config.extra.installation.config_provider_class %}Mezzio{% endif %}
                 {% if config.extra.installation.config_provider_class and config.extra.installation.module_class %}and{% endif %}
                 {% if config.extra.installation.module_class %}laminas-mvc{% endif %}
                 Application
@@ -29,7 +29,7 @@
 {% if config.extra.installation.config_provider_class or config.extra.installation.module_class %}
 <h2 id="installation-for-mezzio-and-laminas-mvc-application">
     Installation for
-    {% if config.extra.installation.config_provider_class %}mezzio{% endif %}
+    {% if config.extra.installation.config_provider_class %}Mezzio{% endif %}
     {% if config.extra.installation.config_provider_class and config.extra.installation.module_class %}and{% endif %}
     {% if config.extra.installation.module_class %}laminas-mvc{% endif %}
     Application
@@ -39,7 +39,7 @@
 <p>
     The <a href="https://docs.laminas.dev/laminas-component-installer/">laminas-component-installer</a>
     is the recommended installation method when using in
-    {% if config.extra.installation.config_provider_class %}a mezzio-based{% endif %}
+    {% if config.extra.installation.config_provider_class %}a Mezzio-based{% endif %}
     {% if config.extra.installation.config_provider_class and config.extra.installation.module_class %}or{% endif %}
     {% if config.extra.installation.module_class %}a laminas-mvc-based{% endif %} application.
     It will automatically inject
@@ -76,7 +76,7 @@
 </p>
 <ul>
     {% if config.extra.installation.config_provider_class %}
-    <li>For a mezzio application, choose <code>config/config.php</code>.</li>
+    <li>For a Mezzio application, choose <code>config/config.php</code>.</li>
     {% endif %}
     {% if config.extra.installation.module_class %}
     <li>For a laminas-mvc application, choose either <code>modules.config.php</code> or <code>application.config.php</code>.</li>
