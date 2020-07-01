@@ -78,3 +78,7 @@ php ${SCRIPT_PATH}/table_responsive.php ${DOC_DIR}
 # Fix pipes in tables
 echo "Fixing pipes in tables"
 php ${SCRIPT_PATH}/table_fix_pipes.php ${DOC_DIR}
+
+# Escape tags in search data
+echo "Escaping tags in search data"
+php ${SCRIPT_PATH}/escape_search_data.php ${DOC_DIR}/html/search/search_index.json
