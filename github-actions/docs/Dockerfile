@@ -10,6 +10,7 @@ RUN apk upgrade --no-cache \
     python3-dev \
     php7 \
     php7-fileinfo \
+    php7-json \
   && pip3 install --no-cache-dir --upgrade pip \
   && rm -rf /var/cache/* \
   && rm -rf /root/.cache/*
