@@ -5,6 +5,10 @@
 
 set -e
 
+export TOP_PID=$$
+trap "exit 0" TERM
+trap "exit 1" KILL
+
 function print_error() {
     echo -e "\e[31mERROR: ${1}\e[m"
 }
@@ -15,7 +19,7 @@ function print_info() {
 
 function skip() {
     print_info "No changes detected, skipping deployment"
-    exit 0
+    kill -s TERM $TOP_PID
 }
 
 # checkout the repository
@@ -23,7 +27,7 @@ git clone git://github.com/${GITHUB_REPOSITORY}.git ${GITHUB_WORKSPACE}
 
 if [ ! -f "${GITHUB_WORKSPACE}/mkdocs.yml" ];then
     print_info "No documentation detected; skipping"
-    exit 0
+    kill -s TERM $TOP_PID
 fi
 
 # check values
@@ -41,7 +45,7 @@ if [ -n "${DOCS_DEPLOY_KEY}" ]; then
     remote_repo="git@github.com:${GITHUB_REPOSITORY}.git"
 else
     print_error "DOCS_DEPLOY_KEY not found"
-    exit 1
+    kill -s KILL $TOP_PID
 fi
 print_info "Publishing to ${remote_repo}"
 
