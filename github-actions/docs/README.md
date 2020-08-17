@@ -77,6 +77,34 @@ Then go to **Secrets**, select the **Add** button, give the new secret the title
 name: docs-build
 
 on:
+  release:
+    types: [published]
+  repository_dispatch:
+    types: docs-build
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and deploy documentation
+        uses: laminas/documentation-theme/github-actions/docs@master
+        env:
+          DOCS_DEPLOY_KEY: ${{ secrets.DOCS_DEPLOY_KEY }}
+        with:
+          emptyCommits: false
+```
+
+### Legacy workflow
+
+If your repository has not yet updated to use release branches and/or
+[automatic-releases](https://github.com/laminas/automatic-releases], and you are
+still using the "master" branch to reflect current stable, you may also use the
+following workflow:
+
+```yaml
+name: docs-build
+
+on:
   push:
     branches:
       - master

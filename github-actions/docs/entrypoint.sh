@@ -18,12 +18,19 @@ function print_info() {
 }
 
 function skip() {
-    print_info "No changes detected, skipping deployment"
+    print_info "Skipping documentation build"
     kill -s TERM $TOP_PID
 }
 
-# checkout the repository
+export WHAT_DO_WE_BUILD=$(php /usr/bin/do-we-build-and-if-so-what.php)
+if [[ "${WHAT_DO_WE_BUILD}" == "FALSE" ]]; then
+    print_info "Not the most recent tag, or not a manual build request; skipping"
+    kill -s TERM $TOP_PID
+fi
+
+# checkout the repository at the given reference
 git clone git://github.com/${GITHUB_REPOSITORY}.git ${GITHUB_WORKSPACE}
+(cd ${GITHUB_WORKSPACE} && git checkout ${WHAT_DO_WE_BUILD})
 
 if [ ! -f "${GITHUB_WORKSPACE}/mkdocs.yml" ];then
     print_info "No documentation detected; skipping"
@@ -108,7 +115,7 @@ cd "${local_dir}" && git remote add origin "${remote_repo}"
 cd "${local_dir}" && git add --all
 
 print_info "Allowing empty commits: ${INPUT_EMPTYCOMMITS}"
-COMMIT_MESSAGE="Automated deployment: $(date -u) ${GITHUB_SHA}"
+COMMIT_MESSAGE="Automated deployment: $(date -u) ${WHAT_DO_WE_BUILD}"
 if [[ ${INPUT_EMPTYCOMMITS} == "false" ]]; then
     cd "${local_dir}" && git commit -m "${COMMIT_MESSAGE}" || skip
 else
@@ -119,4 +126,4 @@ fi
 print_info "- Pushing from ${local_dir} to ${remote_branch}"
 cd "${local_dir}" && git push origin "${remote_branch}"
 
-print_info "${GITHUB_SHA} was successfully deployed"
+print_info "${WHAT_DO_WE_BUILD} was successfully deployed"

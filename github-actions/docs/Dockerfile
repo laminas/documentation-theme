@@ -9,6 +9,7 @@ RUN apk upgrade --no-cache \
     python3 \
     python3-dev \
     php7 \
+    php7-curl \
     php7-fileinfo \
     php7-json \
   && pip3 install --no-cache-dir --upgrade pip \
@@ -23,4 +24,5 @@ RUN pip install nltk==3.4.5
 RUN pip install mkdocs pyaml pymdown-extensions
 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
+COPY do-we-build-and-if-so-what.php /usr/bin/do-we-build-and-if-so-what.php
 ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]
