@@ -18,9 +18,15 @@ function print_info() {
 }
 
 function skip() {
-    print_info "No changes detected, skipping deployment"
+    print_info "Skipping documentation build"
     kill -s TERM $TOP_PID
 }
+
+DO_WE_BUILD=$(php determine_if_we_need_to_build.php)
+if [[ "${DO_WE_BUILD}" != "TRUE" ]]; then
+    print_info "Not a branch, or not the most recent release branch with a tag; skipping"
+    kill -s TERM $TOP_PID
+fi
 
 # checkout the repository
 git clone git://github.com/${GITHUB_REPOSITORY}.git ${GITHUB_WORKSPACE}

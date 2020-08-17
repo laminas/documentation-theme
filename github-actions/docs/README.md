@@ -79,7 +79,7 @@ name: docs-build
 on:
   push:
     branches:
-      - master
+      - '*'
   repository_dispatch:
     types: docs-build
 
