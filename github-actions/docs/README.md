@@ -80,6 +80,10 @@ on:
   push:
     branches:
       - '*'
+    paths:
+      - 'docs/book/**'
+      - 'mkdocs.yml'
+      - 'doc/book/**'
   repository_dispatch:
     types: docs-build
 
