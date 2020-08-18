@@ -79,7 +79,8 @@ name: docs-build
 on:
   push:
     branches:
-      - '*'
+      - 'master'
+      - '*.x'
     paths:
       - 'docs/book/**'
       - 'mkdocs.yml'
