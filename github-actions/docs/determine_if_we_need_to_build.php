@@ -59,7 +59,7 @@ if (! preg_match('/^\d+\.\d+\.x$/', $ref)) {
 $compareRefNames = function ($a, $b) {
     $a = preg_replace('/\.x$/', '.0', $a);
     $b = preg_replace('/\.x$/', '.0', $b);
-    return $a <=> $b;
+    return version_compare($a, $b);
 };
 
 $branches = executeApiCall($repo, 'branches', $token);
