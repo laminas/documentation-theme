@@ -52,8 +52,8 @@ if ('master' === $ref) {
 
 if (! preg_match('/^\d+\.\d+\.x$/', $ref)) {
     // Not a release branch
-    skipDocs(); // redundant; placed here to note that skipDocs exits
-    exit(0);
+    skipDocs();
+    exit(0); // redundant; placed here to note that skipDocs exits
 }
 
 $compareRefNames = function ($a, $b) {
@@ -68,15 +68,15 @@ $branches = array_filter($branches, function ($branch) {
 });
 $mostRecent = array_pop($branches);
 if ($mostRecent === $ref) {
-    buildDocs(); // redundant; placed here to note that buildDocs exits
-    exit(0);
+    buildDocs();
+    exit(0); // redundant; placed here to note that buildDocs exits
 }
 
 $tags = executeApiCall($repo, 'tags', $token);
 $committedReleaseVersion = extractMajorMinorVersion($ref);
 $mostRecentReleaseVersion = extractMajorMinorVersion(array_pop($tags));
 if ($committedReleaseVersion !== $mostRecentReleaseVersion) {
-    skipDocs(); // redundant; placed here to note that skipDocs exits
-    exit(0);
+    skipDocs();
+    exit(0); // redundant; placed here to note that skipDocs exits
 }
 buildDocs();
