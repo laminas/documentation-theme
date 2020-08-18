@@ -5,7 +5,8 @@ declare(strict_types=1);
 /*
  * DECLARATIONS
  */
-$ref   = getenv('GITHUB_REF');
+$event = getenv('GITHUB_EVENT_NAME') ?: '';
+$ref   = preg_replace('#^refs/(tags|heads)/#', '', getenv('GITHUB_REF') ?: '');
 $repo  = getenv('GITHUB_REPOSITORY');
 $token = getenv('GITHUB_TOKEN');
 
@@ -48,16 +49,24 @@ function executeApiCall(string $repo, string $resource, string $token): array
  */
 
 // Push to master branch (legacy):
-if ($ref === 'master') {
-    buildDocs('master');
-    exit(0); // redundant; placed here to note that buildDocs exits
+if ($event === 'push') {
+    $ref === 'master'
+        ? buildDocs('master')
+        : skipDocs();
+    exit(0); // redundant; placed here to note that above each exit
+}
+
+// If not a release or a repository_dispatch, skip
+if (! in_array($event, ['release', 'repository_dispatch'], true)) {
+    skipDocs();
+    exit(0); // redundant; placed here to note that skipDocs exits
 }
 
 $tags = executeApiCall($repo, 'releases', $token);
 $latestStableRelease = array_pop($tags);
 
-// Manual build request (matches sha-1):
-if (preg_match('/^[a-f0-9]{40}$/i', $ref)) {
+// Manual build request
+if ($event === 'repository_dispatch') {
     buildDocs($latestStableRelease);
     exit(0); // redundant; placed here to note that buildDocs exits
 }
