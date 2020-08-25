@@ -22,7 +22,16 @@ mkdocs["markdown_extensions"] = [
                 "use_pygments": False
             }
         },
-        "pymdownx.superfences:",
+        "attr_list:",
+        {
+            "pymdownx.superfences": {
+                "custom_fences": {
+                    "name": "php",
+                    "class": "language-php",
+                    "format": "!!python/name:pymdownx.superfences.fence_code_format"
+                }
+            }
+        },
         "pymdownx.tabbed:",
         {
             "toc": {
