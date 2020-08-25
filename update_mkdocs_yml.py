@@ -22,7 +22,7 @@ mkdocs["markdown_extensions"] = [
                 "use_pygments": False
             }
         },
-        "attr_list:",
+        "markdown.extensions.attr_list:",
         {
             "pymdownx.superfences": {
                 "custom_fences": {
