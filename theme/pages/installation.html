@@ -9,7 +9,7 @@
         {% if config.extra.installation.config_provider_class or config.extra.installation.module_class %}
         <li class="toc__entry">
             <a href="#installation-for-mezzio-and-laminas-mvc-application" class="toc__link nav-link">
-                Installation for A
+                Installation for a
                 {% if config.extra.installation.config_provider_class %}Mezzio{% endif %}
                 {% if config.extra.installation.config_provider_class and config.extra.installation.module_class %}or{% endif %}
                 {% if config.extra.installation.module_class %}laminas-mvc{% endif %}
@@ -28,14 +28,14 @@
 
 {% if config.extra.installation.config_provider_class or config.extra.installation.module_class %}
 <h2 id="installation-for-mezzio-and-laminas-mvc-application">
-    Installation for A
+    Installation for a
     {% if config.extra.installation.config_provider_class %}Mezzio{% endif %}
     {% if config.extra.installation.config_provider_class and config.extra.installation.module_class %}or{% endif %}
     {% if config.extra.installation.module_class %}laminas-mvc{% endif %}
     Application
 </h2>
 
-<h3>Installation and automated Configuration</h3>
+<h3>Installation and Automated Configuration</h3>
 <p>
     The <a href="https://docs.laminas.dev/laminas-component-installer/">laminas-component-installer</a>
     is the recommended installation method when using in
@@ -67,7 +67,7 @@
     <pre><code class="language-bash">$ composer require --dev laminas/laminas-component-installer</code></pre>
 </blockquote>
 
-<h4>Install {{ config.site_name }} and inject Configuration</h4>
+<h4>Install {{ config.site_name }} and Inject Configuration</h4>
 <p>To install the library use Composer:</p>
 <pre><code class="language-bash">$ composer require {% if config.extra.installation.composer_dev %}--dev {% endif %}{{ config.extra.repo_name }}</code></pre>
 <p>
@@ -98,7 +98,7 @@
 <pre><code class="language-bash">$ composer require {% if config.extra.installation.composer_dev %}--dev {% endif %}{{ config.extra.repo_name }}</code></pre>
 
 {% if config.extra.installation.config_provider_class %}
-    <h4>Manual configuration for a Mezzio-based application</h4>
+    <h4>Manual Configuration for a Mezzio-based Application</h4>
     <p>
         Add the configuration provider of {{ config.site_name }} to the configuration file,
         e.g. <code>config/config.php</code>:
@@ -116,7 +116,7 @@ $aggregator = new Laminas\ConfigAggregator\ConfigAggregator([
 {% endif %}
 
 {% if config.extra.installation.module_class %}
-    <h4>Manual configuration for a laminas-mvc-based Application</h4>
+    <h4>Manual Configuration for a laminas-mvc-based Application</h4>
     <p>
         Add {{ config.site_name }} as component at the top of the configuration file for
         modules, e.g. <code>config/modules.config.php</code>:
