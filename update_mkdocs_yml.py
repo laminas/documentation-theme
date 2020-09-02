@@ -22,9 +22,9 @@ mkdocs["markdown_extensions"] = [
                 "use_pygments": False
             }
         },
-        "markdown.extensions.attr_list:",
-        "pymdownx.superfences":,
-        "pymdownx.tabbed:",
+        "markdown.extensions.attr_list",
+        "pymdownx.superfences",
+        "pymdownx.tabbed",
         {
             "toc": {
                 "toc_depth": 2
