@@ -37,7 +37,7 @@ function executeApiCall(string $repo, string $resource, string $token): array
     ]);
     $response = curl_exec($curl);
     $payload  = json_decode($response, true);
-    $payload  = array_map(static function (string $ref): string {
+    $payload  = array_map(static function (array $ref): string {
         return $ref['name'];
     }, $payload);
     usort($payload, 'version_compare');
