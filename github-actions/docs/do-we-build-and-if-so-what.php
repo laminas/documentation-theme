@@ -28,7 +28,7 @@ function skipDocs() {
  */
 function executeApiCall(string $repo, string $resource, string $token): array
 {
-    curl_init('https://api.github.com/repos/' . $repo . '/' . $resource);
+    $curl = curl_init('https://api.github.com/repos/' . $repo . '/' . $resource);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_HTTPHEADER, [
         'Authorization: bearer ' . $token,
