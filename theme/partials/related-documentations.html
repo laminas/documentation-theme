@@ -1,0 +1,14 @@
+{% if config.extra.related_documentations != Undefined and config.extra.related_documentations.headline != Undefined and config.extra.related_documentations.links != Undefined %}
+    <div class="subnavigation hidden-print">
+        <h4 class="subnavigation__title">{{ config.extra.related_documentations.headline|e }}</h4>
+        <ul class="subnavigation__list">
+            {% for link in config.extra.related_documentations.links %}
+                <li class="subnavigation__list-item">
+                    {% for label, href in link.items() %}
+                        <a href="{{ href }}" class="subnavigation__link">{{ label|e }}</a>
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
