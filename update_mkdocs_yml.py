@@ -20,7 +20,7 @@ else:
     # split by "/" and kept branch name (["foo", "bar"])
     ref_parts = ref.split('/')[2:]
     # join the parts again
-    branch = "-".join(ref_parts)
+    branch = "/".join(ref_parts)
 
 with open("mkdocs.yml") as f:
     mkdocs = yaml.load(f, Loader=yaml.SafeLoader)
