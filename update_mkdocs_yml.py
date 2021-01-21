@@ -3,6 +3,22 @@ import os
 import sys
 import yaml
 
+def extract_from_branch_ref(ref: str) -> str:
+    # Ref looks like "refs/heads/foo/bar"
+    # split by "/" and kept branch name (["foo", "bar"])
+    ref_parts = ref.split('/')[2:]
+    # join the parts again
+    return "/".join(ref_parts)
+
+def extract_from_tag_ref(ref: str) -> str:
+    # Ref looks like "refs/tags/1.2.3"
+    # split by "/" and kept version number ("1.2.3")
+    # Then split again and replace patch number with "x"
+    version = ref.split('/')[-1].split('.')
+    version[2] = 'x'
+    # join the parts again
+    return ".".join(version)
+    
 if len(sys.argv) < 3:
     print("Missing required arguments to update_mkdocs_yml.py.\n")
     print("Usage:\n")
@@ -13,14 +29,12 @@ site_url = sys.argv[1]
 docs_dir = sys.argv[2]
 
 ref = os.getenv('GITHUB_REF')
-if ref is None:
-    branch = 'master'
-else:
-    # Ref looks like "refs/heads/foo/bar"
-    # split by "/" and kept branch name (["foo", "bar"])
-    ref_parts = ref.split('/')[2:]
-    # join the parts again
-    branch = "/".join(ref_parts)
+branch = 'master'
+if ref is not None:
+    if 'refs/heads' in ref:
+        branch = extract_from_branch_ref(ref)
+    elif 'refs/tags' in ref:
+        branch = extract_from_tag_ref(ref)
 
 with open("mkdocs.yml") as f:
     mkdocs = yaml.load(f, Loader=yaml.SafeLoader)
