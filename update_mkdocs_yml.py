@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import sys
 import yaml
 
@@ -10,6 +11,16 @@ if len(sys.argv) < 3:
 
 site_url = sys.argv[1]
 docs_dir = sys.argv[2]
+
+ref = os.getenv('GITHUB_REF')
+if ref is None:
+    branch = 'master'
+else:
+    # Ref looks like "refs/heads/foo/bar"
+    # split by "/" and kept branch name (["foo", "bar"])
+    ref_parts = ref.split('/')[2:]
+    # join the parts again
+    branch = "-".join(ref_parts)
 
 with open("mkdocs.yml") as f:
     mkdocs = yaml.load(f, Loader=yaml.SafeLoader)
