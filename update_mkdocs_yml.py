@@ -26,7 +26,7 @@ with open("mkdocs.yml") as f:
     mkdocs = yaml.load(f, Loader=yaml.SafeLoader)
 
 mkdocs["site_url"] = site_url
-mkdocs["edit_uri"] = 'edit/master/{}/'.format(docs_dir)
+mkdocs["edit_uri"] = f'edit/{branch}/{docs_dir}/'
 mkdocs["markdown_extensions"] = [
         {
             "markdown.extensions.codehilite": {
