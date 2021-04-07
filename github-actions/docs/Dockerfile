@@ -1,6 +1,7 @@
 FROM alpine:3.11.2
 
-RUN apk upgrade --no-cache \
+RUN apk update \
+  && apk upgrade --no-cache \
   && apk add --no-cache \
     bash \
     git \
