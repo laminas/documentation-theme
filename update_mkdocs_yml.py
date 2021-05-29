@@ -51,5 +51,10 @@ elif (mkdocs["extra"]["project"] == "MVC") or (mkdocs["extra"]["project"] == "Mv
 elif mkdocs["extra"]["project"] == "Mezzio":
     mkdocs["extra"]["project_url"] = "https://docs.mezzio.dev/"
 
+# If plugins are set, check if search exists
+# https://www.mkdocs.org/user-guide/configuration/#plugins
+if "plugins" in mkdocs and not "search" in mkdocs["plugins"]:
+    mkdocs["plugins"].append("search")
+
 with open("mkdocs.yml", "w") as f:
     yaml.dump(mkdocs, f, default_flow_style=False)
