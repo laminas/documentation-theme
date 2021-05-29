@@ -22,7 +22,7 @@ RUN cd /usr/bin \
   && ln -sf pip3 pip
 
 RUN pip install nltk==3.4.5
-RUN pip install mkdocs pyaml pymdown-extensions
+RUN pip install mkdocs pyaml pymdown-extensions mkdocs-redirects
 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
 COPY do-we-build-and-if-so-what.php /usr/bin/do-we-build-and-if-so-what.php
