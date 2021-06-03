@@ -17,7 +17,7 @@
                 {% else %}
 
                     {# Render sub-navigations without any version number #}
-                    {% if not nav_item.title in config.extra.versions %}
+                    {% if config.extra.current_version == Undefined or not nav_item.title in config.extra.versions %}
                         {% if nav_item.children %}
                             <li class="subnavigation__list-item">
                                 <span class="subnavigation__headline">{{ nav_item.title }}</span>
