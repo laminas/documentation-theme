@@ -30,7 +30,8 @@ mkdocs["markdown_extensions"] = [
             "toc": {
                 "toc_depth": 2
             }
-        }
+        },
+        "callouts"
     ]
 
 mkdocs["theme"] = {
