@@ -51,25 +51,23 @@ empty commits, and uses an alternate base site URL.
 
 ## Environment
 
-This action requires the environment variable `$DOCS_DEPLOY_KEY`, which
-should be a deployment key.
+This action requires on of either the environment variable `$DEPLOY_TOKEN` or `$DOCS_DEPLOY_KEY`:
 
-Generate a deployment key as follows:
+- **$DEPLOY_TOKEN** (preferred) should be a GitHub OAuth token with permissions to commit code.
+  (In the Laminas and Mezzio organizations, we store this as the `ORGANIZATION_ADMIN_TOKEN` secret at the organization level.)
 
-```bash
-$ ssh-keygen -t rsa -b 4096 -C "${git config user.email}" -f gh-pages -N ""
-# Creates the files:
-# - gh-pages (private SSH key)
-# - gh-pages.pub (public key)
-```
+- **$DOCS_DEPLOY_KEY** (legacy) should be a GitHub deployment key, generated as follows:
 
-Go to the **Settings** tab of your repository.
+  ```bash
+  $ ssh-keygen -t rsa -b 4096 -C "${git config user.email}" -f gh-pages -N ""
+  # Creates the files:
+  # - gh-pages (private SSH key)
+  # - gh-pages.pub (public key)
+  ```
 
-Under **Deploy Keys**, select the **Add Key** button, add the contents of your
-`gh-pages.pub` file, and select the "Allow Write Access" checkbox.
-
-Then go to **Secrets**, select the **Add** button, give the new secret the title
-`DOCS_DEPLOY_KEY`, and paste in the contents of your `gh-pages` file.
+  Once generated, go to the **Settings** tab of your repository.
+  Under **Deploy Keys**, select the **Add Key** button, add the contents of your `gh-pages.pub` file, and select the "Allow Write Access" checkbox.
+  Then go to **Secrets**, select the **Add** button, give the new secret the title `DOCS_DEPLOY_KEY`, and paste in the contents of your `gh-pages` file.
 
 ## Example workflow
 
@@ -89,36 +87,56 @@ jobs:
       - name: Build and deploy documentation
         uses: laminas/documentation-theme/github-actions/docs@master
         env:
-          DOCS_DEPLOY_KEY: ${{ secrets.DOCS_DEPLOY_KEY }}
+          DEPLOY_TOKEN: ${{ secrets.ORGANIZATION_ADMIN_TOKEN }}
         with:
           emptyCommits: false
 ```
 
-### Legacy workflow
+### Legacy workflows
 
-If your repository has not yet updated to use release branches and/or
-[automatic-releases](https://github.com/laminas/automatic-releases], and you are
-still using the "master" branch to reflect current stable, you may also use the
-following workflow:
+1. Using a `DOCS_DEPLOY_KEY`
 
-```yaml
-name: docs-build
+   ```yaml
+   name: docs-build
 
-on:
-  push:
-    branches:
-      - master
-  repository_dispatch:
-    types: docs-build
+   on:
+     release:
+       types: [published]
+     repository_dispatch:
+       types: docs-build
 
-jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build and deploy documentation
-        uses: laminas/documentation-theme/github-actions/docs@master
-        env:
-          DOCS_DEPLOY_KEY: ${{ secrets.DOCS_DEPLOY_KEY }}
-        with:
-          emptyCommits: false
-```
+   jobs:
+     build-deploy:
+       runs-on: ubuntu-latest
+       steps:
+         - name: Build and deploy documentation
+           uses: laminas/documentation-theme/github-actions/docs@master
+           env:
+             DEPLOY_DEPLOY_KEY: ${{ secrets.DOCS_DEPLOY_KEY }}
+           with:
+             emptyCommits: false
+   ```
+
+2. If your repository has not yet updated to use release branches and/or [automatic-releases](https://github.com/laminas/automatic-releases], and you are still using the "master" branch to reflect current stable, you may also use the following workflow:
+
+   ```yaml
+   name: docs-build
+
+   on:
+     push:
+       branches:
+         - master
+     repository_dispatch:
+       types: docs-build
+
+   jobs:
+     build-deploy:
+       runs-on: ubuntu-latest
+       steps:
+         - name: Build and deploy documentation
+           uses: laminas/documentation-theme/github-actions/docs@master
+           env:
+             DOCS_DEPLOY_KEY: ${{ secrets.DOCS_DEPLOY_KEY }}
+           with:
+             emptyCommits: false
+   ```
