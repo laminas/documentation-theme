@@ -53,7 +53,7 @@ if [[ "${WHAT_DO_WE_BUILD}" == "FALSE" ]]; then
 fi
 
 # checkout the repository at the given reference
-git clone "git://github.com/${GITHUB_REPOSITORY}.git ${GITHUB_WORKSPACE}"
+git clone "git://github.com/${GITHUB_REPOSITORY}.git" "${GITHUB_WORKSPACE}"
 (cd "${GITHUB_WORKSPACE}" && git checkout "${WHAT_DO_WE_BUILD}")
 
 if [ ! -f "${GITHUB_WORKSPACE}/mkdocs.yml" ];then
