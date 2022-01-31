@@ -56,8 +56,8 @@ if ($event === 'push') {
     exit(0); // redundant; placed here to note that above each exit
 }
 
-// If not a release or a repository_dispatch, skip
-if (! in_array($event, ['release', 'repository_dispatch'], true)) {
+// If not a release or a workflow dispatch event, skip
+if (! in_array($event, ['release', 'repository_dispatch', 'workflow_dispatch'], true)) {
     skipDocs();
     exit(0); // redundant; placed here to note that skipDocs exits
 }
@@ -66,7 +66,7 @@ $tags = executeApiCall($repo, 'releases', $token);
 $latestStableRelease = array_pop($tags);
 
 // Manual build request
-if ($event === 'repository_dispatch') {
+if ($event === 'repository_dispatch' || $event === 'workflow_dispatch') {
     buildDocs($latestStableRelease);
     exit(0); // redundant; placed here to note that buildDocs exits
 }
