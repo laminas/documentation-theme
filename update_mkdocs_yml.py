@@ -24,6 +24,7 @@ mkdocs["markdown_extensions"] = [
         },
         "markdown.extensions.attr_list",
         "markdown.extensions.md_in_html",
+        "markdown.extensions.def_list",
         "pymdownx.superfences",
         "pymdownx.tabbed",
         {
