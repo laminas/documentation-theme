@@ -46,12 +46,26 @@ mkdocs["theme"] = {
 mkdocs["extra"]["repo_name"] = mkdocs["repo_url"].replace("https://github.com/", "")
 mkdocs["extra"]["base_url"] = "https://docs.laminas.dev/"
 
+docsearch_laminas = {
+    "appId": "XABM11Q268",
+    "appKey": "c2f2fc3798f4286290d1d84a30756117",
+    "indexName": "docs-laminas",
+}
+docsearch_mezzio = {
+    "appId": "IBRMIFZRV9",
+    "appKey": "f726fdb27ad9df82896188da2ff6745b",
+    "indexName": "docs-mezzio",
+}
+
 if mkdocs["extra"]["project"] == "Components":
     mkdocs["extra"]["project_url"] = "https://docs.laminas.dev/components/"
+    mkdocs["extra"]["docsearch"] = docsearch_laminas
 elif (mkdocs["extra"]["project"] == "MVC") or (mkdocs["extra"]["project"] == "Mvc"):
     mkdocs["extra"]["project_url"] = "https://docs.laminas.dev/mvc/"
+    mkdocs["extra"]["docsearch"] = docsearch_laminas
 elif mkdocs["extra"]["project"] == "Mezzio":
     mkdocs["extra"]["project_url"] = "https://docs.mezzio.dev/"
+    mkdocs["extra"]["docsearch"] = docsearch_mezzio
 
 # If plugins are set, check if search exists
 # https://www.mkdocs.org/user-guide/configuration/#plugins

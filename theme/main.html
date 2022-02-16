@@ -76,8 +76,19 @@
         <script src="{{ path }}"></script>
     {% endfor %}
 
-    {# Search modal #}
-    {% include "partials/search-modal.html" %}
+    {# Algolia DocSearch #}
+    {% if config.extra.docsearch %}
+        <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+        <script>
+          docsearch({
+            appId: '{{ config.extra.docsearch.appId }}',
+            apiKey: '{{ config.extra.docsearch.apiKey }}',
+            indexName: '{{ config.extra.docsearch.indexName }}',
+            container: '#docsearch',
+            debug: false
+          });
+        </script>
+    {% endif %}
 </body>
 {% endif %}
 
