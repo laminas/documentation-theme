@@ -53,7 +53,7 @@ if [[ "${WHAT_DO_WE_BUILD}" == "FALSE" ]]; then
 fi
 
 # checkout the repository at the given reference
-git clone "git://github.com/${GITHUB_REPOSITORY}.git" "${GITHUB_WORKSPACE}"
+git clone "https://github.com/${GITHUB_REPOSITORY}.git" "${GITHUB_WORKSPACE}"
 (cd "${GITHUB_WORKSPACE}" && git checkout "${WHAT_DO_WE_BUILD}")
 
 if [ ! -f "${GITHUB_WORKSPACE}/mkdocs.yml" ];then
@@ -92,7 +92,7 @@ PUBLISH_DIR=$(grep 'site_dir:' mkdocs.yml | awk '{print $2}')
 print_info "Deploy to ${PUBLISH_REPOSITORY}@${PUBLISH_BRANCH} from directory ${PUBLISH_DIR}"
 
 print_info "Cloning documentation theme"
-git clone git://github.com/laminas/documentation-theme.git "${GITHUB_WORKSPACE}/documentation-theme"
+git clone https://github.com/laminas/documentation-theme.git "${GITHUB_WORKSPACE}/documentation-theme"
 
 print_info "Building documentation"
 (cd "${GITHUB_WORKSPACE}" ; ./documentation-theme/build.sh -u "${site_url}")
