@@ -117,7 +117,7 @@ jobs:
              emptyCommits: false
    ```
 
-2. If your repository has not yet updated to use release branches and/or [automatic-releases](https://github.com/laminas/automatic-releases], and you are still using the "master" branch to reflect current stable, you may also use the following workflow:
+2. If your repository has not yet updated to use release branches and/or [automatic-releases](https://github.com/laminas/automatic-releases), and you are still using the "master" branch to reflect current stable, you may also use the following workflow:
 
    ```yaml
    name: docs-build
