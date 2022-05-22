@@ -51,7 +51,7 @@ empty commits, and uses an alternate base site URL.
 
 ## Environment
 
-This action requires on of either the environment variable `$DEPLOY_TOKEN` or `$DOCS_DEPLOY_KEY`:
+This action requires one of either the environment variable `$DEPLOY_TOKEN` or `$DOCS_DEPLOY_KEY`:
 
 - **$DEPLOY_TOKEN** (preferred) should be a GitHub OAuth token with permissions to commit code.
   (In the Laminas and Mezzio organizations, we store this as the `ORGANIZATION_ADMIN_TOKEN` secret at the organization level.)
