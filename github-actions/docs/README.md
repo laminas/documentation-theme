@@ -22,7 +22,7 @@ As an example:
     siteUrl: https://docs.laminas.dev
 ```
 
-The above will build docs in the `doc/html` subdirectory, will NOT build for
+The above will build docs in the `docs/html` subdirectory, will NOT build for
 empty commits, and uses an alternate base site URL.
 
 ## Behaviors
