@@ -22,7 +22,7 @@ As an example:
     siteUrl: https://docs.laminas.dev
 ```
 
-The above will build docs in the `doc/html` subdirectory, will NOT build for
+The above will build docs in the `docs/html` subdirectory, will NOT build for
 empty commits, and uses an alternate base site URL.
 
 ## Behaviors
@@ -51,7 +51,7 @@ empty commits, and uses an alternate base site URL.
 
 ## Environment
 
-This action requires on of either the environment variable `$DEPLOY_TOKEN` or `$DOCS_DEPLOY_KEY`:
+This action requires one of either the environment variable `$DEPLOY_TOKEN` or `$DOCS_DEPLOY_KEY`:
 
 - **$DEPLOY_TOKEN** (preferred) should be a GitHub OAuth token with permissions to commit code.
   (In the Laminas and Mezzio organizations, we store this as the `ORGANIZATION_ADMIN_TOKEN` secret at the organization level.)
@@ -117,7 +117,7 @@ jobs:
              emptyCommits: false
    ```
 
-2. If your repository has not yet updated to use release branches and/or [automatic-releases](https://github.com/laminas/automatic-releases], and you are still using the "master" branch to reflect current stable, you may also use the following workflow:
+2. If your repository has not yet updated to use release branches and/or [automatic-releases](https://github.com/laminas/automatic-releases), and you are still using the "master" branch to reflect current stable, you may also use the following workflow:
 
    ```yaml
    name: docs-build
