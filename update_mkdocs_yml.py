@@ -43,7 +43,9 @@ mkdocs["theme"] = {
         ]
     }
 
-mkdocs["extra"]["repo_name"] = mkdocs["repo_url"].replace("https://github.com/", "").rstrip("/")
+# Remove any trailing slashes from the end of the repo_url
+mkdocs["repo_url"] = mkdocs["repo_url"].rstrip("/")
+mkdocs["extra"]["repo_name"] = mkdocs["repo_url"].replace("https://github.com/", "")
 mkdocs["extra"]["base_url"] = "https://docs.laminas.dev/"
 
 if mkdocs["extra"]["project"] == "Components":
