@@ -28,6 +28,14 @@ mkdocs["markdown_extensions"] = [
         "pymdownx.superfences",
         "pymdownx.tabbed",
         {
+            "pymdownx.snippets": {
+                "url_download": True,
+                "base_path": [
+                    "docs/snippets"
+                ]
+            }
+        },
+        {
             "toc": {
                 "toc_depth": 2
             }
