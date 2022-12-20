@@ -26,7 +26,7 @@ function skip() {
 function remote_repo_setup() {
     local -n RESULT=$1
     local DEPLOY_TOKEN=$2
-    RESULT="https://${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+    RESULT="https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 }
 
 function remote_repo_setup_legacy() {
