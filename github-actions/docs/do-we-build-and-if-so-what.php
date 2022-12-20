@@ -8,7 +8,7 @@ declare(strict_types=1);
 $event = getenv('GITHUB_EVENT_NAME') ?: '';
 $ref   = preg_replace('#^refs/(tags|heads)/#', '', getenv('GITHUB_REF') ?: '');
 $repo  = getenv('GITHUB_REPOSITORY');
-$token = getenv('GITHUB_TOKEN');
+$token = getenv('DEPLOY_TOKEN') ?: getenv('GITHUB_TOKEN');
 
 /*
  * FUNCTIONS
