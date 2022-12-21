@@ -87,7 +87,7 @@ jobs:
       - name: Build and deploy documentation
         uses: laminas/documentation-theme/github-actions/docs@master
         env:
-          DEPLOY_TOKEN: ${{ secrets.ORGANIZATION_ADMIN_TOKEN }}
+          DEPLOY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           emptyCommits: false
 ```
