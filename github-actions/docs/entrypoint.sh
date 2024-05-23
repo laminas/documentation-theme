@@ -95,7 +95,7 @@ print_info "Cloning documentation theme"
 git clone https://github.com/laminas/documentation-theme.git "${GITHUB_WORKSPACE}/documentation-theme"
 
 print_info "Building documentation"
-(cd "${GITHUB_WORKSPACE}" ; ./documentation-theme/build.sh -u "${site_url}")
+(cd "${GITHUB_WORKSPACE}" ; ./documentation-theme/build.sh -u "${site_url}" -t "${DEPLOY_TOKEN}")
 
 print_info "Deploying documentation"
 remote_branch="${PUBLISH_BRANCH}"

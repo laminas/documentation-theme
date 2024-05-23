@@ -24,12 +24,14 @@ function help() {
     echo "Options:"
     echo "  -h           Usage help; this message."
     echo "  -u <url>     Deployment URL of documentation (to ensure search works)"
+    echo "  -t           GitHub Token"
 }
 
 while getopts hu: option;do
     case "${option}" in
         h) help && exit 0;;
         u) SITE_URL=${OPTARG};;
+        t) GH_TOKEN=${OPTARG};;
     esac
 done
 
@@ -40,7 +42,7 @@ DOC_DIR=$(dirname ${DOCS_DIR})
 
 # Update the mkdocs.yml
 echo "Building documentation in ${DOC_DIR}"
-${SCRIPT_PATH}/update_mkdocs_yml.py ${SITE_URL} ${DOCS_DIR}
+${SCRIPT_PATH}/update_mkdocs_yml.py ${SITE_URL} ${DOCS_DIR} ${GH_TOKEN}
 
 # Preserve files if necessary (as mkdocs build --clean removes all files)
 if [ -e .laminas-mkdoc-theme-preserve ]; then

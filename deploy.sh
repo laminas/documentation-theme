@@ -74,7 +74,7 @@ mkdir -p ${DOC_DIR}/html
 )
 
 # Build the documentation
-${SCRIPT_PATH}/build.sh -u ${SITE_URL}
+${SCRIPT_PATH}/build.sh -u ${SITE_URL} ${GH_TOKEN}
 
 # Commit and push the documentation to gh-pages
 (
