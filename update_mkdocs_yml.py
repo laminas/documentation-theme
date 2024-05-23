@@ -10,6 +10,7 @@ if len(sys.argv) < 3:
 
 site_url = sys.argv[1]
 docs_dir = sys.argv[2]
+token = sys.argv[3]
 
 with open("mkdocs.yml") as f:
     mkdocs = yaml.load(f, Loader=yaml.SafeLoader)
