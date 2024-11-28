@@ -4,6 +4,9 @@
 </h1>
 <p>{{ config.site_description }}</p>
 
+{# Notification of abandoned package #}
+{% include "partials/abandoned-notice.html" %}
+
 {% if config.extra.show_special_homepage %}
     {{ page.content }}
 
