@@ -1,0 +1,9 @@
+{% if 'abandoned' in config.site_name|lower %}
+    {{ config.site_name|replace('(Abandoned)', '')|replace('(abandoned)', '') }}
+
+    {% if show_badge %}
+        <span class="badge badge-warning">abandoned</span>
+    {% endif %}
+{% else %}
+    {{ config.site_name }}
+{% endif %}
