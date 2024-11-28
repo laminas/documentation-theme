@@ -1,7 +1,10 @@
 {% if nav|length > 1 %}
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="{{ nav.homepage.url|url }}">{{ config.site_name }}</a>
+            <a href="{{ nav.homepage.url|url }}">
+                {% set show_badge = true %}
+                {% include "partials/site-name.html" %}
+            </a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>

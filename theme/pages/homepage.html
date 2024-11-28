@@ -1,4 +1,7 @@
-<h1>{{ config.site_name }}</h1>
+<h1>
+    {% set show_badge = true %}
+    {% include "partials/site-name.html" %}
+</h1>
 <p>{{ config.site_description }}</p>
 
 {% if config.extra.show_special_homepage %}

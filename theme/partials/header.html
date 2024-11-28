@@ -8,7 +8,10 @@
                     {{ config.extra.project }}
 
                     {% if config.site_name != 'Laminas Docs' %}
-                        <small class="header__subtitle">{{ config.site_name }}</small>
+                        <small class="header__subtitle">
+                            {% set show_badge = true %}
+                            {% include "partials/site-name.html" %}
+                        </small>
                     {% endif %}
                 </h1>
             </div>

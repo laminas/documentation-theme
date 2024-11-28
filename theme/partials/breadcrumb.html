@@ -5,7 +5,11 @@
             <li class="breadcrumb-item"><a href="{{ config.extra.project_url }}">{{ config.extra.project }}</a></li>
 
             {% if page.title != 'Home' %}
-                <li class="breadcrumb-item"><a href="{{ nav.homepage.url|url }}">{{ config.site_name }}</a></li>
+                <li class="breadcrumb-item">
+                    <a href="{{ nav.homepage.url|url }}">
+                        {% include "partials/site-name.html" %}
+                    </a>
+                </li>
 
                 {% for doc in page.ancestors|reverse %}
                     {% if doc.link %}
@@ -21,7 +25,9 @@
 
                 <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
             {% else %}
-                <li class="breadcrumb-item">{{ config.site_name }}</li>
+                <li class="breadcrumb-item">
+                    {% include "partials/site-name.html" %}
+                </li>
             {% endif %}
         {% else %}
             <li class="breadcrumb-item">Overview</li>
