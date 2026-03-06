@@ -6,7 +6,7 @@
             {% if page.previous_page and not page.previous_page.title.startswith("_") %}
                 <a rel="prev" class="page-nav__link page-nav__link--prev" href="{{ page.previous_page.url|url }}">
                     <small class="page-nav__label">Previous</small>
-                    <i class="fa fa-chevron-left"></i>
+                    <i class="bi bi-arrow-left"></i>
                     {{ page.previous_page.title }}
                 </a>
             {% endif %}
@@ -18,7 +18,7 @@
                 <a rel="next" class="page-nav__link page-nav__link--next" href="{{ page.next_page.url|url }}">
                     <small class="page-nav__label">Next</small>
                     {{ page.next_page.title }}
-                    <i class="fa fa-chevron-right"></i>
+                    <i class="bi bi-arrow-right"></i>
                 </a>
             {% endif %}
         </li>
